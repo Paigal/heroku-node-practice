@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'tokentoken') {
+    if (req.query['hub.verify_token'] === 'test-token') {
       res.send(req.query['hub.challenge']);
    } else {
       res.send('Error, wrong validation token');    
@@ -31,3 +31,4 @@ app.get('/webhook/', function (req, res) {
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
+
