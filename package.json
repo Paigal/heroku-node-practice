@@ -2,7 +2,7 @@
   "name": "heroku-node-practice",
   "version": "1.0.0",
   "description": "New bot",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
     "start": "node app.js"
@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "foobar": "^1.1.0",
     "mongoose": "^4.9.8",
     "request": "^2.81.0"
   }
