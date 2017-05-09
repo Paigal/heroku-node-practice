@@ -16,6 +16,11 @@ app.use(bodyParser.json())
 // Index route
 app.get('/', function (req, res) {
     res.send("Hello world, I seem to be working")
+    if (req.query['hub.verify_token'] === 'test-token') {
+      res.send(req.query['hub.challenge']);
+   } else {
+      res.send('Error, wrong validation token');    
+   }
 })
 
 // for Facebook verification
