@@ -2,10 +2,10 @@
   "name": "heroku-node-practice",
   "version": "1.0.0",
   "description": "New bot",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "author": "Paigal",
   "license": "ISC",
