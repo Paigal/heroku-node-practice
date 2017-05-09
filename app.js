@@ -19,14 +19,13 @@ app.get('/', function (req, res) {
 })
 
 // for Facebook verification
-webhook: function(req, res) {
-
-   if (req.query['hub.verify_token'] === 'tokentoken') {
+app.get('/webhook/', function (req, res) {
+    if (req.query['hub.verify_token'] === 'tokentoken') {
       res.send(req.query['hub.challenge']);
    } else {
       res.send('Error, wrong validation token');    
    }
-}
+})
 
 // Spin up the server
 app.listen(app.get('port'), function() {
