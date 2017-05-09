@@ -1,25 +1,34 @@
-var express = require("express");
-var request = require("request");
-var bodyParser = require("body-parser");
+'use strict'
 
-var app = express();
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-app.listen((process.env.PORT || 5000));
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const app = express()
 
-// Server index page
-app.get("/", function (req, res) {
-  res.send("Deployed!");
-});
+app.set('port', (process.env.PORT || 5000))
 
-// Facebook Webhook
-// Used for verification
-app.get("/webhook", function (req, res) {
-  if (req.query["hub.verify_token"] === "this_is_my_token") {
-    console.log("Verified webhook");
-    res.status(200).send(req.query["hub.challenge"]);
-  } else {
-    console.error("Verification failed. The tokens do not match.");
-    res.sendStatus(403);
-  }
-});
+// Process application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
+
+// Process application/json
+app.use(bodyParser.json())
+
+// Index route
+app.get('/', function (req, res) {
+    res.send("Hello world, I seem to be working")
+})
+
+// for Facebook verification
+app.get('/webhook', function (req, res) {
+    if (req.query['hub.verify_token'] === 'test-token') {
+      res.send(req.query['hub.challenge']);
+   } else {
+      res.send('Error, wrong validation token');    
+   }
+})
+
+// Spin up the server
+app.listen(app.get('port'), function() {
+    console.log('running on port', app.get('port'))
+})
+
